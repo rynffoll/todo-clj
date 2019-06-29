@@ -4,7 +4,7 @@
 
 Run the project directly:
 
-    $ clj -m todo-clj.core
+    $ clj -m todo_clj.core
 
 Run the project's tests (they'll fail until you edit them):
 
