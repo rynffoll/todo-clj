@@ -1,5 +1,15 @@
 {:paths ["resources" "src"]
- :deps {org.clojure/clojure {:mvn/version "RELEASE"}}
+ :deps {org.clojure/clojure {:mvn/version "1.10.1"}
+        ring {:mvn/version "1.7.1"}
+        compojure {:mvn/version "1.6.1"}
+        hikari-cp {:mvn/version "2.7.1"}
+        migratus {:mvn/version "1.2.3"}
+        ring/ring-defaults {:mvn/version "0.3.2"}
+        ring/ring-json {:mvn/version "0.5.0-beta1"}
+        ring-logger {:mvn/version "1.0.1"}
+        org.postgresql/postgresql {:mvn/version "42.2.6"}
+        clojure.jdbc {:mvn/version "0.4.0"}
+        ch.qos.logback/logback-classic {:mvn/version "1.2.3"}}
  :aliases
  {:test {:extra-paths ["test"]
          :extra-deps {org.clojure/test.check {:mvn/version "RELEASE"}}}
