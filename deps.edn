@@ -9,7 +9,8 @@
         ring-logger {:mvn/version "1.0.1"}
         org.postgresql/postgresql {:mvn/version "42.2.6"}
         clojure.jdbc {:mvn/version "0.4.0"}
-        ch.qos.logback/logback-classic {:mvn/version "1.2.3"}}
+        ch.qos.logback/logback-classic {:mvn/version "1.2.3"}
+        integrant {:mvn/version "0.7.0"}}
  :aliases
  {:test {:extra-paths ["test"]
          :extra-deps {org.clojure/test.check {:mvn/version "RELEASE"}}}

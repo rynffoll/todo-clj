@@ -14,10 +14,10 @@ Content-Type: application/json
 GET :todos
 
 # get
-GET :todos/10
+GET :todos/1
 
 # update
-PUT :todos/10
+PUT :todos/1
 Content-Type: application/json
 
 {
@@ -27,5 +27,5 @@ Content-Type: application/json
 }
 
 # delete
-DELETE :todos/9
+DELETE :todos/1
 
