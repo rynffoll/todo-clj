@@ -1,4 +1,5 @@
 {:paths ["resources" "src"]
+
  :deps {org.clojure/clojure {:mvn/version "1.10.1"}
         ring {:mvn/version "1.7.1"}
         compojure {:mvn/version "1.6.1"}
@@ -11,6 +12,7 @@
         clojure.jdbc {:mvn/version "0.4.0"}
         ch.qos.logback/logback-classic {:mvn/version "1.2.3"}
         integrant {:mvn/version "0.7.0"}}
+
  :aliases
  {:test {:extra-paths ["test"]
          :extra-deps {org.clojure/test.check {:mvn/version "RELEASE"}}}
@@ -19,4 +21,10 @@
                 {:git/url "https://github.com/cognitect-labs/test-runner"
                  :sha "76568540e7f40268ad2b646110f237a60295fa3c"}}
    :main-opts ["-m" "cognitect.test-runner"
-               "-d" "test"]}}}
+               "-d" "test"]}
+  :dev {:extra-paths ["env/dev"]
+        :extra-deps {org.clojure/tools.deps.alpha
+                     {:git/url "https://github.com/clojure/tools.deps.alpha.git"
+                      :sha "d0b33e0d346736aa985c150145b332f97b92135e"
+                      :exclusions [org.slf4j/slf4j-nop]}
+                     integrant/repl {:mvn/version "0.3.1"}}}}}
