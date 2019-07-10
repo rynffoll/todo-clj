@@ -22,6 +22,18 @@
                  :sha "76568540e7f40268ad2b646110f237a60295fa3c"}}
    :main-opts ["-m" "cognitect.test-runner"
                "-d" "test"]}
+  :uberjar {:extra-deps {uberdeps {:mvn/version "0.1.4"}}
+            :main-opts ["-m" "uberdeps.uberjar"]}
+  :native-image
+  {:main-opts ["-m clj.native-image todo_clj"
+               "--initialize-at-build-time"
+               ;; optional native image name override
+               "-H:Name=todo_clj"]
+   :jvm-opts ["-Dclojure.compiler.direct-linking=true"]
+   :extra-deps
+   {clj.native-image
+    {:git/url "https://github.com/taylorwood/clj.native-image.git"
+     :sha "7708e7fd4572459c81f6a6b8e44c96f41cdd92d4"}}}
   :dev {:extra-paths ["env/dev"]
         :extra-deps {org.clojure/tools.deps.alpha
                      {:git/url "https://github.com/clojure/tools.deps.alpha.git"
