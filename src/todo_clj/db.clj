@@ -46,4 +46,4 @@
 (defn delete-todo-by-id [db id]
   "DELETE FROM todos
          WHERE id = ?"
-    (jdbc/delete! db :todos ["id = ?" (Integer/parseInt id)]))
+  (jdbc/delete! db :todos ["id = ?" (Integer/parseInt id)]))

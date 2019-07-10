@@ -36,7 +36,5 @@
 
   (reset! system (ig/init config))
 
-  (ig/halt! @system)
-
-  )
+  (ig/halt! @system))
 

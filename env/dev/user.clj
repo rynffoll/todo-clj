@@ -26,6 +26,4 @@
 
   (halt)
 
-  (reset)
-
-  )
+  (reset))
