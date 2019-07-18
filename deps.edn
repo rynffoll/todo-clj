@@ -11,7 +11,12 @@
         org.postgresql/postgresql {:mvn/version "42.2.6"}
         clojure.jdbc {:mvn/version "0.4.0"}
         ch.qos.logback/logback-classic {:mvn/version "1.2.3"}
-        integrant {:mvn/version "0.7.0"}}
+        integrant {:mvn/version "0.7.0"}
+        iapetos {:mvn/version "0.1.8"}
+        io.prometheus/simpleclient {:mvn/version "0.6.0"}
+        io.prometheus/simpleclient_common {:mvn/version "0.6.0"}
+        io.prometheus/simpleclient_pushgateway {:mvn/version "0.6.0"}
+        io.prometheus/simpleclient_hotspot {:mvn/version "0.6.0"}}
 
  :aliases
  {:test {:extra-paths ["test"]

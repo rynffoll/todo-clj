@@ -3,7 +3,8 @@
   (:require [compojure.core :refer :all]
             [ring.logger :as logger]
             [ring.middleware.json :as json]
-            [todo_clj.db :as db]))
+            [todo_clj.db :as db]
+            [iapetos.collector.ring :as ring]))
 
 (defn get-todos [db]
   (db/get-todos db))
@@ -29,8 +30,9 @@
     (PUT "/todos/:id" [id :as {todo :body}] (update-todo db id todo))
     (DELETE "/todos/:id" [id] (delete-todo-by-id db id))))
 
-(defn handler [db]
+(defn handler [db registry]
   (-> (todo-routes db)
+      (ring/wrap-metrics registry {:path "/metrics"})
       (json/wrap-json-body {:keywords? true})
       json/wrap-json-response
       logger/wrap-with-logger))

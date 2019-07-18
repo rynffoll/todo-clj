@@ -1,4 +1,5 @@
-:todos = http://localhost:3000/todos
+:host = http://localhost:3000
+:todos = :host/todos
 
 # create
 POST :todos
@@ -29,3 +30,5 @@ Content-Type: application/json
 # delete
 DELETE :todos/1
 
+# metrics
+GET :host/metrics
