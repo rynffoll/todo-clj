@@ -1,22 +1,23 @@
-{:db {:maximum-pool-size  10
-      :pool-name          "pg-pool"
-      :adapter            "postgresql"
-      :username           "postgres"
-      :password           "secret"
-      :database-name      "postgres"
-      :server-name        "localhost"
-      :port-number        5432}
+{:db {:maximum-pool-size 10
+      :pool-name         "pg-pool"
+      :adapter           "postgresql"
+      :username          "postgres"
+      :password          "secret"
+      :database-name     "postgres"
+      :server-name       "localhost"
+      :port-number       5432
+      :registry          #ig/ref :registry}
 
- :handler {:db #ig/ref :db
+ :handler {:db       #ig/ref :db
            :registry #ig/ref :registry}
 
  :server {:handler #ig/ref :handler
-          :port 3000
-          :join? false}
+          :port    3000
+          :join?   false}
 
- :migrations {:db #ig/ref :db
-              :store :database
-              :migration-dir "migrations/"
+ :migrations {:db                   #ig/ref :db
+              :store                :database
+              :migration-dir        "migrations/"
               :migration-table-name "migrations"}
 
  :registry {}}

@@ -6,14 +6,18 @@
             [ring.adapter.jetty :as jetty]
             [todo_clj.api :as api]
             [iapetos.core :as prometheus]
+            [iapetos.registry :as r]
             [iapetos.collector.ring :as ring]
-            [iapetos.collector.jvm :as jvm]))
+            [iapetos.collector.jvm :as jvm])
+  (:import com.zaxxer.hikari.metrics.prometheus.PrometheusMetricsTrackerFactory))
 
 (def config
   (ig/read-string (slurp "resources/config.edn")))
 
-(defmethod ig/init-key :db [_ opts]
-  {:datasource (h/make-datasource opts)})
+(defmethod ig/init-key :db [_ {:keys [registry] :as opts}]
+  {:datasource (h/make-datasource
+                (merge (dissoc opts :registry)
+                       {:metrics-tracker-factory (PrometheusMetricsTrackerFactory. (r/raw registry))}))})
 
 (defmethod ig/halt-key! :db [_ {db :datasource}]
   (h/close-datasource db))
