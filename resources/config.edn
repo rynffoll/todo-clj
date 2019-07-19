@@ -4,15 +4,15 @@
       :username          "postgres"
       :password          "secret"
       :database-name     "postgres"
-      :server-name       "localhost"
-      :port-number       5432
+      :server-name       #or [#env DB_HOST "localhost"]
+      :port-number       #long #or [#env DB_PORT 5432]
       :registry          #ig/ref :registry}
 
  :handler {:db       #ig/ref :db
            :registry #ig/ref :registry}
 
  :server {:handler #ig/ref :handler
-          :port    3000
+          :port    #long #or [#env PORT 3000]
           :join?   false}
 
  :migrations {:db                   #ig/ref :db

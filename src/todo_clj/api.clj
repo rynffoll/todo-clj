@@ -1,10 +1,10 @@
 (ns todo_clj.api
   (:gen-class)
   (:require [compojure.core :refer :all]
+            [iapetos.collector.ring :as ring]
             [ring.logger :as logger]
             [ring.middleware.json :as json]
-            [todo_clj.db :as db]
-            [iapetos.collector.ring :as ring]))
+            [todo_clj.db :as db]))
 
 (defn get-todos [db]
   (db/get-todos db))

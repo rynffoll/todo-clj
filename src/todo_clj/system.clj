@@ -1,18 +1,24 @@
 (ns todo_clj.system
   (:gen-class)
-  (:require [hikari-cp.core :as h]
+  (:require [aero.core :as aero]
+            [clojure.java.io :as io]
+            [hikari-cp.core :as h]
+            [iapetos.collector.jvm :as jvm]
+            [iapetos.collector.ring :as ring]
+            [iapetos.core :as prometheus]
+            [iapetos.registry :as r]
             [integrant.core :as ig]
             [migratus.core :as m]
             [ring.adapter.jetty :as jetty]
-            [todo_clj.api :as api]
-            [iapetos.core :as prometheus]
-            [iapetos.registry :as r]
-            [iapetos.collector.ring :as ring]
-            [iapetos.collector.jvm :as jvm])
+            [todo_clj.api :as api])
   (:import com.zaxxer.hikari.metrics.prometheus.PrometheusMetricsTrackerFactory))
 
 (def config
-  (ig/read-string (slurp "resources/config.edn")))
+  ;; (ig/read-string (slurp (io/resource "config.edn")))
+  ;; https://github.com/juxt/aero/issues/44#issuecomment-511237997
+  (binding [*data-readers* {'ig/ref ig/ref}]
+    (-> (io/resource "config.edn")
+        (aero/read-config))))
 
 (defmethod ig/init-key :db [_ {:keys [registry] :as opts}]
   {:datasource (h/make-datasource
