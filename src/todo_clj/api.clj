@@ -22,13 +22,21 @@
 (defn delete-todo-by-id [db id]
   (db/delete-todo-by-id db id))
 
+(defn health [db]
+  {:body
+   {:status (if (try (db/is-valid db)
+                     (catch Exception _ false))
+              "UP" "DOWN")}})
+
 (defn todo-routes [db]
   (defroutes todos
     (GET "/todos" [] (get-todos db))
     (GET "/todos/:id" [id] (get-todo-by-id db id))
     (POST "/todos" {todo :body} (create-todo db todo))
     (PUT "/todos/:id" [id :as {todo :body}] (update-todo db id todo))
-    (DELETE "/todos/:id" [id] (delete-todo-by-id db id))))
+    (DELETE "/todos/:id" [id] (delete-todo-by-id db id))
+
+    (GET "/health" [] (health db))))
 
 (defn handler [db registry]
   (-> (todo-routes db)

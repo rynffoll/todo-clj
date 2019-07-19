@@ -47,3 +47,9 @@
   "DELETE FROM todos
          WHERE id = ?"
   (jdbc/delete! db :todos ["id = ?" (Integer/parseInt id)]))
+
+(defn is-valid [db]
+  (jdbc/with-db-connection [conn db]
+    (-> conn
+        :connection
+        (.isValid 5))))

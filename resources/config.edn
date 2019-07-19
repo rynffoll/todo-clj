@@ -1,12 +1,13 @@
-{:db {:maximum-pool-size 10
-      :pool-name         "pg-pool"
-      :adapter           "postgresql"
-      :username          "postgres"
-      :password          "secret"
-      :database-name     "postgres"
-      :server-name       #or [#env DB_HOST "localhost"]
-      :port-number       #long #or [#env DB_PORT 5432]
-      :registry          #ig/ref :registry}
+{:db {:maximum-pool-size  10
+      :connection-timeout 10000
+      :pool-name          "pg-pool"
+      :adapter            "postgresql"
+      :username           "postgres"
+      :password           "secret"
+      :database-name      "postgres"
+      :server-name        #or [#env DB_HOST "localhost"]
+      :port-number        #long #or [#env DB_PORT 5432]
+      :registry           #ig/ref :registry}
 
  :handler {:db       #ig/ref :db
            :registry #ig/ref :registry}

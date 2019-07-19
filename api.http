@@ -32,3 +32,6 @@ DELETE :todos/1
 
 # metrics
 GET :host/metrics
+
+# health
+GET :host/health
