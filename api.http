@@ -2,6 +2,9 @@
 :todos = :host/todos
 
 # create
+# Expect: 200 OK
+# Response: HTTP/1.1 200 OK
+# Result: Passed
 POST :todos
 Content-Type: application/json
 
@@ -12,12 +15,21 @@ Content-Type: application/json
 }
 
 # get all
+# Expect: 200 OK
+# Response: HTTP/1.1 200 OK
+# Result: Passed
 GET :todos
 
 # get
+# Expect: 200 OK
+# Response: HTTP/1.1 200 OK
+# Result: Passed
 GET :todos/1
 
 # update
+# Expect: 200 OK
+# Response: HTTP/1.1 200 OK
+# Result: Passed
 PUT :todos/1
 Content-Type: application/json
 
@@ -28,10 +40,19 @@ Content-Type: application/json
 }
 
 # delete
+# Expect: 200 OK
+# Response: HTTP/1.1 200 OK
+# Result: Passed
 DELETE :todos/1
 
 # metrics
+# Expect: 200 OK
+# Response: HTTP/1.1 200 OK
+# Result: Passed
 GET :host/metrics
 
 # health
+# Expect: 200 OK
+# Response: HTTP/1.1 200 OK
+# Result: Passed
 GET :host/health
